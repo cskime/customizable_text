@@ -13,7 +13,7 @@ dependencies:
 
 ### Basic usage
 
-<img src="./images/example-basic-usage.png" width="400" />
+<img src="https://github.com/cskime/customizable_text/raw/main/images/example-basic-usage.png" width="400" />
 
 ```dart
 @override
@@ -49,7 +49,7 @@ Widget build(BuildContext context) {
 
 ### Dynamic customizing
 
-<img src="./images/example-dynamic-customizing.png" width="400" />
+<img src="https://github.com/cskime/customizable_text/raw/main/images/example-dynamic-customizing.png" width="400" />
 
 ```dart
 @override
@@ -118,7 +118,7 @@ Widget build(BuildContext context) {
 
 ### Customize just for the second span word
 
-<img src="./images/example-second-span.png" width="400" />
+<img src="https://github.com/cskime/customizable_text/raw/main/images/example-second-span.png" width="400" />
 
 ```dart
 @override
