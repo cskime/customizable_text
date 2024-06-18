@@ -29,12 +29,18 @@ class ExampleApp extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
-        child: _customizableText(),
+        child: Column(
+          children: [
+            _sample1(),
+            const SizedBox(height: 16),
+            _sample2(),
+          ],
+        ),
       ),
     );
   }
 
-  CustomizableText _customizableText() {
+  CustomizableText _sample1() {
     const originalText =
         'By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. We may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. Learn more. Others will be able to find you by email or phone number, when provided, unless you choose otherwise here.';
 
@@ -85,6 +91,35 @@ class ExampleApp extends StatelessWidget {
         ),
         CustomText('Learn more'),
         CustomText('here'),
+      ],
+    );
+  }
+
+  CustomizableText _sample2() {
+    const originalText =
+        'By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. We may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. Learn more. Others will be able to find you by email or phone number, when provided, unless you choose otherwise here.';
+
+    return const CustomizableText(
+      originalText,
+      style: TextStyle(
+        color: Colors.grey,
+      ),
+      customStyle: TextStyle(
+        color: Colors.blue,
+        fontWeight: FontWeight.w500,
+      ),
+      customizes: [
+        CustomText(
+          'Privacy Policy',
+          span: 1,
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            decoration: TextDecoration.lineThrough,
+            decorationColor: Colors.red,
+            decorationThickness: 2,
+          ),
+        ),
       ],
     );
   }

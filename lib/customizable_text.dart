@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 part 'custom_text.dart';
@@ -19,32 +21,18 @@ class CustomizableText extends StatelessWidget {
   final List<CustomText> customizes;
 
   List<_CustomTextPositionInfo> _sortedCustomTextsWithPositionBySpanOrder() {
-    var positionsForCustomText = <CustomText, List<int>>{};
+    var infos = <_CustomTextPositionInfo>[];
 
     var start = 0;
     for (final customText in customizes) {
-      final position = text.indexOf(customText.text, start);
-
-      positionsForCustomText.update(
-        customText,
-        (value) => [...value, position],
-        ifAbsent: () => [position],
-      );
-
+      final matches = customText.text.allMatches(text, start).toList();
+      final index = min(matches.length - 1, customText.span);
+      final position = matches[index].start;
+      infos.add((customText: customText, position: position));
       start = position + customText.text.length;
     }
 
-    return positionsForCustomText.entries
-        .expand(
-          (entry) => entry.value.map<_CustomTextPositionInfo>(
-            (index) => (
-              customText: entry.key,
-              position: index,
-            ),
-          ),
-        )
-        .toList()
-      ..sort((a, b) => a.position.compareTo(b.position));
+    return infos..sort((a, b) => a.position.compareTo(b.position));
   }
 
   List<String> _normalTextsUsingCustomTextPositionInfos(
