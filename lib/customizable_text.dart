@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 part 'custom_text.dart';
@@ -70,6 +71,7 @@ class CustomizableText extends StatelessWidget {
         TextSpan(
           text: customText.text,
           style: customText.style ?? customStyle ?? style,
+          recognizer: customText.tapGestureRecognizer,
         ),
         TextSpan(text: normalText),
       ]);

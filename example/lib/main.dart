@@ -44,17 +44,17 @@ class ExampleApp extends StatelessWidget {
     const originalText =
         'By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. We may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. Learn more. Others will be able to find you by email or phone number, when provided, unless you choose otherwise here.';
 
-    return const CustomizableText(
+    return CustomizableText(
       originalText,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.grey,
       ),
-      customStyle: TextStyle(
+      customStyle: const TextStyle(
         color: Colors.blue,
         fontWeight: FontWeight.w500,
       ),
       customizes: [
-        CustomText(
+        const CustomText(
           'Terms of Service',
           style: TextStyle(
             color: Colors.red,
@@ -63,14 +63,15 @@ class ExampleApp extends StatelessWidget {
         ),
         CustomText(
           'Privacy Policy',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.green,
             fontSize: 18,
           ),
+          onTap: (text) => print(text),
         ),
         CustomText(
           'Cookie Use',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.orange,
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -78,8 +79,9 @@ class ExampleApp extends StatelessWidget {
             decoration: TextDecoration.underline,
             decorationColor: Colors.orange,
           ),
+          onTap: (text) => print(text),
         ),
-        CustomText(
+        const CustomText(
           'Privacy Policy',
           style: TextStyle(
             color: Colors.black,
@@ -89,8 +91,8 @@ class ExampleApp extends StatelessWidget {
             decorationThickness: 2,
           ),
         ),
-        CustomText('Learn more'),
-        CustomText('here'),
+        const CustomText('Learn more'),
+        const CustomText('here'),
       ],
     );
   }
