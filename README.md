@@ -1,39 +1,162 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Customizable Text
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+Customize a style of random words based on RichText.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Installation
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  customizable_text: ^0.1.0
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Basic usage
+
+<img src="./images/example-basic-usage.png" width="400" />
 
 ```dart
-const like = 'sample';
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text("Customizable Text Sample"),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(24),
+      child: CustomizableText(
+        originalText,
+        style: const TextStyle(
+          color: Colors.grey,
+        ),
+        customStyle: const TextStyle(
+          color: Colors.blue,
+          fontWeight: FontWeight.w500,
+        ),
+        customizes: const [
+          CustomText('Terms of Service'),
+          CustomText('Privacy Policy'),
+          CustomText('Cookie Use'),
+          CustomText('Privacy Policy'),
+          CustomText('Learn more'),
+          CustomText('here'),
+        ],
+      ),
+    ),
+  );
+}
 ```
 
-## Additional information
+### Dynamic customizing
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+<img src="./images/example-dynamic-customizing.png" width="400" />
+
+```dart
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text("Customizable Text Sample"),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(24),
+      child: CustomizableText(
+        originalText,
+        style: const TextStyle(
+          color: Colors.grey,
+        ),
+        customStyle: const TextStyle(
+          color: Colors.blue,
+          fontWeight: FontWeight.w500,
+        ),
+        customizes: [
+          const CustomText(
+            'Terms of Service',
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          CustomText(
+            'Privacy Policy',
+            style: const TextStyle(
+              color: Colors.green,
+              fontSize: 18,
+            ),
+            onTap: (text) => print(text),
+          ),
+          CustomText(
+            'Cookie Use',
+            style: const TextStyle(
+              color: Colors.orange,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.orange,
+            ),
+            onTap: (text) => print(text),
+          ),
+          const CustomText(
+            'Privacy Policy',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.lineThrough,
+              decorationColor: Colors.red,
+              decorationThickness: 2,
+            ),
+          ),
+          const CustomText('Learn more'),
+          const CustomText('here'),
+        ],
+      ),
+    ),
+  );
+}
+```
+
+### Customize just for the second span word
+
+<img src="./images/example-second-span.png" width="400" />
+
+```dart
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text("Customizable Text Sample"),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(24),
+      child: CustomizableText(
+        originalText,
+        style: const TextStyle(
+          color: Colors.grey,
+        ),
+        customStyle: const TextStyle(
+          color: Colors.blue,
+          fontWeight: FontWeight.w500,
+        ),
+        customizes: const [
+          CustomText(
+            'Privacy Policy',
+            span: 1,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.lineThrough,
+              decorationColor: Colors.red,
+              decorationThickness: 2,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+```
+
+## License
+
+[MIT](./LICENSE)
