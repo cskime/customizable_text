@@ -1,6 +1,6 @@
 name: customizable_text
 description: A widget that can customize text style for specific texts based on RichText. It's simple, easy to use, and intuitive.
-version: 0.1.0
+version: 0.1.1
 homepage: "https://github.com/cskime/customizable_text"
 
 environment:
